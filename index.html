@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#087f8c">
+<meta name="description" content="Nuvia Care - Health Awareness and Education">
+
+<link rel="manifest" href="./manifest.json">
+
+<title>Nuvia Care | Health Awareness</title>
+
+<style>
+:root{
+  --primary:#087f8c;
+  --primary-dark:#075e68;
+  --blue:#1464a5;
+  --cyan:#19b6b9;
+  --bg:#f4fafb;
+  --text:#17324d;
+  --muted:#64788b;
+  --white:#ffffff;
+  --danger:#d92d3f;
+  --border:#e1edf0;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  height:74px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(15px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 7%;
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:1px solid var(--border);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  text-decoration:none;
+  color:var(--primary-dark);
+  font-size:22px;
+  font-weight:800;
+}
+
+.brand-icon{
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  background:linear-gradient(135deg,var(--primary),var(--cyan));
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-size:22px;
+  box-shadow:0 8px 20px rgba(8,127,140,.25);
+}
+
+.brand span{
+  color:var(--cyan);
+}
+
+nav{
+  display:flex;
+  align-items:center;
+  gap:25px;
+}
+
+nav a{
+  text-decoration:none;
+  color:#405b70;
+  font-size:14px;
+  font-weight:650;
+  transition:.25s;
+}
+
+nav a:hover{
+  color:var(--primary);
+}
+
+.menu{
+  display:none;
+  border:0;
+  background:none;
+  font-size:27px;
+  color:var(--primary-dark);
+  cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:570px;
+  padding:85px 7%;
+  display:grid;
+  grid-template-columns:1.08fr .92fr;
+  align-items:center;
+  gap:55px;
+
+  background:
+    radial-gradient(circle at 82% 20%,
+      rgba(25,182,185,.16) 0 13%,
+      transparent 32%),
+    radial-gradient(circle at 95% 85%,
+      rgba(20,100,165,.10) 0 10%,
+      transparent 30%),
+    linear-gradient(135deg,#effbfc,#f7fbff);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border-radius:30px;
+  background:#e4f7f7;
+  color:var(--primary);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.5px;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:clamp(40px,5vw,66px);
+  line-height:1.06;
+  letter-spacing:-2.5px;
+  color:var(--primary-dark);
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:var(--blue);
+}
+
+.hero p{
+  max-width:610px;
+  font-size:18px;
+  color:var(--muted);
+}
+
+.actions{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 21px;
+  border-radius:13px;
+  text-decoration:none;
+  font-weight:750;
+  transition:.25s;
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--primary),var(--blue));
+  color:#fff;
+  box-shadow:0 10px 25px rgba(8,127,140,.22);
+}
+
+.btn.primary:hover{
+  transform:translateY(-3px);
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--primary);
+  border:1px solid #d8e8eb;
+}
+
+.btn.secondary:hover{
+  transform:translateY(-3px);
+}
+
+/* ================= HEALTH VISUAL ================= */
+
+.visual{
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+.health-card{
+  width:min(370px,92%);
+  background:rgba(255,255,255,.95);
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:27px;
+  box-shadow:0 25px 65px rgba(23,76,100,.13);
+  transform:rotate(2deg);
+}
+
+.pulse{
+  height:135px;
+  border-radius:23px;
+  background:linear-gradient(135deg,#e6f9fa,#eaf4ff);
+  display:grid;
+  place-items:center;
+  font-size:63px;
+  margin-bottom:19px;
+  position:relative;
+  overflow:hidden;
+}
+
+.pulse::after{
+  content:"";
+  position:absolute;
+  width:75%;
+  height:2px;
+  background:var(--primary);
+  opacity:.25;
+  animation:pulseLine 2s infinite;
+}
+
+@keyframes pulseLine{
+  0%{transform:translateX(-120%);}
+  100%{transform:translateX(150%);}
+}
+
+.health-card h3{
+  font-size:21px;
+  color:var(--primary-dark);
+  margin-bottom:5px;
+}
+
+.health-card p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.mini{
+  display:flex;
+  gap:10px;
+  margin-top:19px;
+}
+
+.mini div{
+  flex:1;
+  background:#f4f8fa;
+  border-radius:13px;
+  padding:10px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.mini b{
+  display:block;
+  color:var(--primary);
+  font-size:18px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+  padding:78px 7%;
+}
+
+.section-head{
+  text-align:center;
+  max-width:730px;
+  margin:0 auto 40px;
+}
+
+.section-head .tag{
+  color:var(--cyan);
+  font-weight:850;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+}
+
+.section-head h2{
+  font-size:35px;
+  color:var(--primary-dark);
+  margin:7px 0;
+}
+
+.section-head p{
+  color:var(--muted);
+}
+
+/* ================= CARDS ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:21px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:26px;
+  box-shadow:0 9px 30px rgba(20,75,100,.07);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 20px 40px rgba(20,75,100,.13);
+}
+
+.icon{
+  width:50px;
+  height:50px;
+  border-radius:15px;
+  background:#e8f7f8;
+  display:grid;
+  place-items:center;
+  font-size:25px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  font-size:19px;
+  color:var(--primary-dark);
+  margin-bottom:8px;
+}
+
+.card p,
+.card li{
+  font-size:14px;
+  color:var(--muted);
+}
+
+.card ul{
+  padding-left:18px;
+  margin-top:12px;
+}
+
+.card li{
+  margin:4px 0;
+}
+
+/* ================= ALTERNATE ================= */
+
+.alt{
+  background:#eaf6f7;
+}
+
+.info{
+  max-width:920px;
+  margin:auto;
+  background:#fff;
+  border-radius:23px;
+  padding:31px;
+  border:1px solid #dcebed;
+  box-shadow:0 12px 32px rgba(20,75,100,.07);
+}
+
+.info h3{
+  color:var(--primary-dark);
+  margin-bottom:9px;
+}
+
+.info p{
+  color:var(--muted);
+}
+
+/* ================= EMERGENCY ================= */
+
+.emergency{
+  margin:0 7% 70px;
+  border-radius:22px;
+  background:#fff3f4;
+  border:1px solid #ffd4da;
+  padding:25px 29px;
+  display:flex;
+  gap:16px;
+  align-items:center;
+}
+
+.emergency .eicon{
+  width:50px;
+  height:50px;
+  border-radius:15px;
+  background:#ffe3e6;
+  display:grid;
+  place-items:center;
+  font-size:27px;
+  flex-shrink:0;
+}
+
+.emergency strong{
+  color:#b42333;
+}
+
+.emergency p{
+  color:#6b3940;
+  font-size:14px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:#063f57;
+  color:#d8eaf1;
+  text-align:center;
+  padding:32px 7%;
+  font-size:13px;
+}
+
+footer b{
+  color:#fff;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+  header{
+    padding:0 5%;
+  }
+
+  nav{
+    display:none;
+    position:absolute;
+    top:74px;
+    left:0;
+    right:0;
+    background:#fff;
+    padding:15px 5%;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0;
+    box-shadow:0 15px 28px rgba(20,75,100,.12);
+  }
+
+  nav.open{
+    display:flex;
+  }
+
+  nav a{
+    width:100%;
+    padding:12px 0;
+    border-bottom:1px solid #eef3f5;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    padding:62px 5%;
+    text-align:center;
+  }
+
+  .hero p{
+    margin:auto;
+  }
+
+  .actions{
+    justify-content:center;
+  }
+
+  .visual{
+    order:-1;
+  }
+
+  .health-card{
+    transform:none;
+  }
+
+  .grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  section{
+    padding:60px 5%;
+  }
+
+  .emergency{
+    margin-left:5%;
+    margin-right:5%;
+  }
+}
+
+@media(max-width:520px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    letter-spacing:-1px;
+  }
+
+  .section-head h2{
+    font-size:29px;
+  }
+
+  .health-card{
+    width:100%;
+  }
+
+  .brand{
+    font-size:20px;
+  }
+
+  .brand-icon{
+    width:39px;
+    height:39px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+  <a class="brand" href="#home">
+
+    <div class="brand-icon">✚</div>
+
+    Nuvia <span>Care</span>
+
+  </a>
+
+  <nav id="nav">
+
+    <a href="#home">Home</a>
+    <a href="#ncd">NCD</a>
+    <a href="#cancer">Cancer</a>
+    <a href="#eye">Eye Care</a>
+    <a href="#stroke">Stroke</a>
+    <a href="#emergency">Emergency</a>
+
+  </nav>
+
+  <button
+    class="menu"
+    onclick="toggleMenu()"
+    aria-label="Open Menu">
+    ☰
+  </button>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div>
+
+    <div class="eyebrow">
+      ✦ HEALTH AWARENESS & EDUCATION
+    </div>
+
+    <h1>
+      Know More.<br>
+      <span>Live Better.</span>
+    </h1>
+
+    <p>
+      Explore simple and reliable health-awareness
+      information covering chronic diseases, cancer,
+      eye health and stroke.
+    </p>
+
+    <div class="actions">
+
+      <a class="btn primary" href="#ncd">
+        Explore Health Topics →
+      </a>
+
+      <a class="btn secondary" href="#emergency">
+        Emergency Information
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="visual">
+
+    <div class="health-card">
+
+      <div class="pulse">
+        🩺
+      </div>
+
+      <h3>
+        Your health matters
+      </h3>
+
+      <p>
+        Small healthy habits and timely medical attention
+        can make a meaningful difference.
+      </p>
+
+      <div class="mini">
+
+        <div>
+          <b>01</b>
+          Learn
+        </div>
+
+        <div>
+          <b>02</b>
+          Prevent
+        </div>
+
+        <div>
+          <b>03</b>
+          Act
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NCD -->
+
+<section id="ncd">
+
+  <div class="section-head">
+
+    <div class="tag">
+      01 · Chronic Health
+    </div>
+
+    <h2>
+      Non-Communicable Diseases
+    </h2>
+
+    <p>
+      Learn about common chronic diseases and
+      practical prevention habits.
+    </p>
+
+  </div>
+
+
+  <div class="grid">
+
+    <article class="card">
+
+      <div class="icon">🩺</div>
+
+      <h3>Hypertension</h3>
+
+      <p>
+        High blood pressure that may increase the risk
+        of heart disease and stroke.
+      </p>
+
+      <ul>
+        <li>Regular BP check-up</li>
+        <li>Healthy diet</li>
+        <li>Physical activity</li>
+      </ul>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="icon">🩸</div>
+
+      <h3>Diabetes Mellitus</h3>
+
+      <p>
+        A condition in which blood glucose levels
+        remain high.
+      </p>
+
+      <ul>
+        <li>Monitor blood sugar</li>
+        <li>Balanced diet</li>
+        <li>Regular exercise</li>
+      </ul>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="icon">⚠️</div>
+
+      <h3>Risk Factors</h3>
+
+      <p>
+        Important factors that can affect long-term health.
+      </p>
+
+      <ul>
+        <li>Smoking</li>
+        <li>Unhealthy diet</li>
+        <li>Physical inactivity</li>
+        <li>Obesity</li>
+      </ul>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- CANCER -->
+
+<section class="alt" id="cancer">
+
+  <div class="section-head">
+
+    <div class="tag">
+      02 · Awareness
+    </div>
+
+    <h2>
+      Cancer Awareness
+    </h2>
+
+    <p>
+      Awareness and timely medical evaluation
+      are important.
+    </p>
+
+  </div>
+
+
+  <div class="info">
+
+    <h3>
+      🎗️ Early Detection Matters
+    </h3>
+
+    <p>
+      Regular health check-ups and awareness of unusual
+      symptoms can support early medical evaluation.
+      This website provides awareness information only
+      and does not replace professional medical advice.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- EYE -->
+
+<section id="eye">
+
+  <div class="section-head">
+
+    <div class="tag">
+      03 · Vision
+    </div>
+
+    <h2>
+      Eye Health & Ophthalmology
+    </h2>
+
+    <p>
+      Know common eye conditions and the importance
+      of regular eye care.
+    </p>
+
+  </div>
+
+
+  <div class="grid">
+
+    <article class="card">
+
+      <div class="icon">👁️</div>
+
+      <h3>Cataract</h3>
+
+      <p>
+        Clouding of the eye's lens that can affect vision.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="icon">👁️</div>
+
+      <h3>Glaucoma</h3>
+
+      <p>
+        A group of eye conditions that can damage
+        the optic nerve.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="icon">🔎</div>
+
+      <h3>Blindness Prevention</h3>
+
+      <p>
+        Regular eye examinations can help identify
+        certain eye problems early.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- STROKE -->
+
+<section class="alt" id="stroke">
+
+  <div class="section-head">
+
+    <div class="tag">
+      04 · Emergency Awareness
+    </div>
+
+    <h2>
+      Stroke Awareness
+    </h2>
+
+    <p>
+      Recognizing warning signs quickly can help someone
+      receive urgent care.
+    </p>
+
+  </div>
+
+
+  <div class="grid">
+
+    <article class="card">
+
+      <div class="icon">🚨</div>
+
+      <h3>Warning Signs</h3>
+
+      <p>
+        Sudden weakness, difficulty speaking, or facial
+        asymmetry may require urgent medical attention.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="icon">⚠️</div>
+
+      <h3>Risk Factors</h3>
+
+      <p>
+        High blood pressure, diabetes, smoking and
+        other factors can increase risk.
+      </p>
+
+    </article>
+
+
+    <article class="card">
+
+      <div class="icon">🏥</div>
+
+      <h3>Treatment</h3>
+
+      <p>
+        Suspected stroke is a medical emergency—
+        seek immediate professional care.
+      </p>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- EMERGENCY -->
+
+<div class="emergency" id="emergency">
+
+  <div class="eicon">
+    🚑
+  </div>
+
+  <div>
+
+    <strong>
+      Emergency Notice
+    </strong>
+
+    <p>
+      If someone has severe or sudden symptoms,
+      contact local emergency services or seek
+      immediate medical care.
+    </p>
+
+  </div>
+
+</div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <p>
+    © 2026 <b>Nuvia Care</b> · Health Awareness Project
+  </p>
+
+  <p>
+    Educational information only · Not a substitute
+    for professional medical advice.
+  </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function toggleMenu(){
+
+  const nav = document.getElementById("nav");
+
+  nav.classList.toggle("open");
+
+}
+
+
+document.querySelectorAll("nav a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    document
+      .getElementById("nav")
+      .classList.remove("open");
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
